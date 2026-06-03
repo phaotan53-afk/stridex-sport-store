@@ -13,7 +13,7 @@ import { SanPham } from '../../models/sanpham';
   <section id="chi-tiet-san-pham" class="khung chi-tiet-san-pham" *ngIf="sanpham">
     <div class="khung-chi-tiet-san-pham">
       <img [src]="sanpham.hinh" class="anh-chi-tiet-san-pham">
-
+      
       <div class="noi-dung-chi-tiet-san-pham">
         <p class="loai-chi-tiet-san-pham">{{sanpham.loai}}</p>
         <h1 class="ten-chi-tiet-san-pham">{{sanpham.ten}}</h1>

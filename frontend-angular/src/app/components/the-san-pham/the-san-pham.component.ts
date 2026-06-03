@@ -33,7 +33,7 @@ import { GiohangService } from '../../services/giohang.service';
 export class TheSanPhamComponent {
   @Input({ required: true }) sanpham!: SanPham;
 
-  constructor(private giohang: GiohangService) {}
+  constructor(private giohang: GiohangService) { }
 
   themVaoGio() {
     this.giohang.them(this.sanpham);

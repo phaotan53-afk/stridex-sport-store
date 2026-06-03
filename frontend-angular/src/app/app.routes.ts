@@ -4,6 +4,7 @@ import { SanphamComponent } from './pages/sanpham/sanpham.component';
 import { ChitietSanphamComponent } from './pages/chitiet-sanpham/chitiet-sanpham.component';
 import { GiohangComponent } from './pages/giohang/giohang.component';
 import { DangnhapComponent } from './pages/dangnhap/dangnhap.component';
+import { adminGuard } from './guards/admin.guard';
 
 export const routes: Routes = [
   { path: '', component: TrangchuComponent },
@@ -11,5 +12,11 @@ export const routes: Routes = [
   { path: 'san-pham/:id', component: ChitietSanphamComponent },
   { path: 'gio-hang', component: GiohangComponent },
   { path: 'dang-nhap', component: DangnhapComponent },
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: '' },
+  {
+    path: 'admin',
+    loadComponent: () =>
+      import('./pages/admin/admin').then(m => m.AdminComponent),
+    canActivate: [adminGuard]
+  }
 ];

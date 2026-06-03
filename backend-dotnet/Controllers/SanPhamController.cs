@@ -43,5 +43,36 @@ namespace StridexApi.Controllers
 
             return Ok(danhSach);
         }
+        [HttpPost]
+        public async Task<ActionResult<SanPham>> ThemSanPham(SanPham sanPham)
+        {
+            _context.SanPhams.Add(sanPham);
+            await _context.SaveChangesAsync();
+            return Ok(sanPham);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> SuaSanPham(int id, SanPham sanPham)
+        {
+            if (id != sanPham.Id) return BadRequest();
+
+            _context.Entry(sanPham).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+
+            return Ok(sanPham);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> XoaSanPham(int id)
+        {
+            var sanPham = await _context.SanPhams.FindAsync(id);
+
+            if (sanPham == null) return NotFound();
+
+            _context.SanPhams.Remove(sanPham);
+            await _context.SaveChangesAsync();
+
+            return Ok();
+        }
     }
 }

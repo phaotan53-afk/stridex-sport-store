@@ -6,7 +6,7 @@ import { GiohangService } from '../../services/giohang.service';
 @Component({
   selector: 'app-thanh-dieu-huong',
   standalone: true,
-  imports: [RouterLink,   CommonModule],
+  imports: [RouterLink, CommonModule],
   template: `
 <header id="dau-trang">
 
