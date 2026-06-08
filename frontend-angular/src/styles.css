@@ -1559,3 +1559,18 @@ html {
 .khoi-loai-san-pham {
   scroll-margin-top: 150px;
 }
+
+#luoi-danh-muc a {
+  color: inherit;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+#luoi-danh-muc a:hover {
+  color: #e63946;
+  padding-left: 8px;
+}
+
+.cot-danh-muc h3 a:hover {
+  letter-spacing: 1px;
+}

@@ -92,3 +92,23 @@
 .nut-mua-san-pham {
     margin-top: 24px;
 }
+
+.chon-so-luong{
+ display:flex;
+ gap:10px;
+ align-items:center;
+}
+
+.chon-so-luong button{
+ width:32px;
+ height:32px;
+ border-radius:50%;
+ border:none;
+ background:#0057ff;
+ color:white;
+ cursor:pointer;
+}
+
+.chon-so-luong span{
+ font-weight:900;
+}

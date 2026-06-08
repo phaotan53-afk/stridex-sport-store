@@ -7,6 +7,7 @@ import { GiohangComponent } from './pages/giohang/giohang.component';
 import { DangnhapComponent } from './pages/dangnhap/dangnhap.component';
 
 import { dangNhapGuard } from './guards/dangnhap.guard';
+import{DanhmucSanphamComponent} from './pages/danhmuc-sanpham/danhmuc-sanpham';
 
 export const routes: Routes = [
   { path: '', component: TrangchuComponent },
@@ -14,6 +15,8 @@ export const routes: Routes = [
   { path: 'san-pham', component: SanphamComponent },
 
   { path: 'san-pham/:id', component: ChitietSanphamComponent },
+
+  { path: 'danh-muc/:slug', component: DanhmucSanphamComponent },
 
   {
     path: 'gio-hang',

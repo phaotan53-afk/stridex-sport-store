@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\BaiTapPhao\\FianlWebAngular\\stridex-sport-store\\backend-dotnet\\StridexApi.csproj": {}
+    "D:\\WebCK\\stridex-sport-store\\backend-dotnet\\StridexApi.csproj": {}
   },
   "projects": {
-    "D:\\BaiTapPhao\\FianlWebAngular\\stridex-sport-store\\backend-dotnet\\StridexApi.csproj": {
+    "D:\\WebCK\\stridex-sport-store\\backend-dotnet\\StridexApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\BaiTapPhao\\FianlWebAngular\\stridex-sport-store\\backend-dotnet\\StridexApi.csproj",
+        "projectUniqueName": "D:\\WebCK\\stridex-sport-store\\backend-dotnet\\StridexApi.csproj",
         "projectName": "StridexApi",
-        "projectPath": "D:\\BaiTapPhao\\FianlWebAngular\\stridex-sport-store\\backend-dotnet\\StridexApi.csproj",
+        "projectPath": "D:\\WebCK\\stridex-sport-store\\backend-dotnet\\StridexApi.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\BaiTapPhao\\FianlWebAngular\\stridex-sport-store\\backend-dotnet\\obj\\",
+        "outputPath": "D:\\WebCK\\stridex-sport-store\\backend-dotnet\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -44,7 +44,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "10.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -78,7 +78,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
