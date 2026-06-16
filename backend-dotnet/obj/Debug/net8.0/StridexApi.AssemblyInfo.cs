@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StridexApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+33799ad91d6f74d0a4984de5467a81e4f699cf75")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+900e8a08c99ecf5bb9f6be37d872b3c822e9a9e2")]
 [assembly: System.Reflection.AssemblyProductAttribute("StridexApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StridexApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
