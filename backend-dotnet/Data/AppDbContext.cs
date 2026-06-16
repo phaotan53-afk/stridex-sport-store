@@ -21,7 +21,10 @@ namespace StridexApi.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<SanPham>().ToTable("SanPham");
-            modelBuilder.Entity<NguoiDung>().ToTable("NguoiDung");
+
+            // Sửa dòng này: dùng model NguoiDung để đọc bảng TaiKhoan
+            modelBuilder.Entity<NguoiDung>().ToTable("TaiKhoan");
+
             modelBuilder.Entity<DonHang>().ToTable("DonHang");
             modelBuilder.Entity<ChiTietDonHang>().ToTable("ChiTietDonHang");
         }

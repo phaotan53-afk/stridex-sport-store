@@ -71,16 +71,45 @@ export class GiohangComponent {
     });
   }
   thanhToanVnPay() {
-    const maDonHang = 'DH' + new Date().getTime();
-    const soTien = this.tongTien;
+    const nguoiDung = this.auth.layNguoiDungDangNhap();
 
-    this.thanhToanService.taoThanhToanVnPay(maDonHang, soTien).subscribe({
-      next: (res) => {
-        window.location.href = res.paymentUrl;
+    if (!nguoiDung) {
+      alert('Vui lòng đăng nhập để thanh toán!');
+      return;
+    }
+
+    if (this.dsGioHang.length === 0) {
+      alert('Giỏ hàng đang trống!');
+      return;
+    }
+
+    const chiTiet = this.dsGioHang.map(sp => ({
+      sanPhamId: sp.id,
+      soLuong: sp.soLuong,
+      donGia: sp.gia
+    }));
+
+    this.donhangService.taoDonHang({
+      nguoiDungId: nguoiDung.id,
+      chiTiet: chiTiet
+    }).subscribe({
+      next: (donHang) => {
+        const maDonHang = donHang.maDonHang;
+        const soTien = this.tongTien;
+
+        this.thanhToanService.taoThanhToanVnPay(maDonHang, soTien).subscribe({
+          next: (res) => {
+            window.location.href = res.paymentUrl;
+          },
+          error: (err) => {
+            console.error('Lỗi tạo thanh toán VNPay:', err);
+            alert('Không tạo được thanh toán VNPay!');
+          }
+        });
       },
       error: (err) => {
-        console.error('Lỗi tạo thanh toán VNPay:', err);
-        alert('Không tạo được thanh toán VNPay');
+        console.error('Lỗi tạo đơn hàng:', err);
+        alert('Không tạo được đơn hàng trước khi thanh toán VNPay!');
       }
     });
   }

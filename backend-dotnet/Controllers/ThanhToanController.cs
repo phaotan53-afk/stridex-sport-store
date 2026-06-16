@@ -16,6 +16,10 @@ namespace StridexApi.Controllers
             _configuration = configuration;
         }
 
+        // =====================================================
+        // TẠO LINK THANH TOÁN VNPAY
+        // API: POST /api/ThanhToan/tao-thanh-toan-vnpay
+        // =====================================================
         [HttpPost("tao-thanh-toan-vnpay")]
         public IActionResult TaoThanhToanVnPay([FromBody] TaoThanhToanDto dto)
         {
@@ -57,6 +61,10 @@ namespace StridexApi.Controllers
             });
         }
 
+        // =====================================================
+        // NHẬN KẾT QUẢ TRẢ VỀ TỪ VNPAY
+        // API: GET /api/ThanhToan/vnpay-return
+        // =====================================================
         [HttpGet("vnpay-return")]
         public IActionResult VnPayReturn()
         {
@@ -81,25 +89,32 @@ namespace StridexApi.Controllers
             string rawData = BuildQueryString(vnpParams);
             string checkHash = HmacSHA512(hashSecret, rawData);
 
-            if (!checkHash.Equals(vnpSecureHash, StringComparison.InvariantCultureIgnoreCase))
-            {
-                return Redirect("http://localhost:4200/thanh-toan-that-bai");
-            }
-
+            string maDonHang = query["vnp_TxnRef"].ToString();
             string responseCode = query["vnp_ResponseCode"].ToString();
             string transactionStatus = query["vnp_TransactionStatus"].ToString();
-            string maDonHang = query["vnp_TxnRef"].ToString();
+
+            if (!checkHash.Equals(vnpSecureHash, StringComparison.InvariantCultureIgnoreCase))
+            {
+                return Redirect(
+                    $"http://localhost:4200/thanh-toan-that-bai?maDonHang={maDonHang}&trangThai=fail&maLoi=sai-chu-ky"
+                );
+            }
 
             if (responseCode == "00" && transactionStatus == "00")
             {
-                // Tạm thời redirect thành công.
-                // Sau này sẽ thêm code cập nhật đơn hàng trong SQL.
-                return Redirect($"http://localhost:4200/thanh-toan-thanh-cong?maDonHang={maDonHang}");
+                return Redirect(
+                    $"http://localhost:4200/thanh-toan-thanh-cong?maDonHang={maDonHang}&trangThai=success"
+                );
             }
 
-            return Redirect($"http://localhost:4200/thanh-toan-that-bai?maDonHang={maDonHang}");
+            return Redirect(
+                $"http://localhost:4200/thanh-toan-that-bai?maDonHang={maDonHang}&trangThai=fail&maLoi={responseCode}"
+            );
         }
 
+        // =====================================================
+        // TẠO QUERY STRING ĐÚNG CHUẨN VNPAY
+        // =====================================================
         private string BuildQueryString(SortedList<string, string> data)
         {
             var query = new StringBuilder();
@@ -119,6 +134,9 @@ namespace StridexApi.Controllers
             return query.ToString();
         }
 
+        // =====================================================
+        // KÝ DỮ LIỆU BẰNG HMAC SHA512
+        // =====================================================
         private string HmacSHA512(string key, string inputData)
         {
             byte[] keyBytes = Encoding.UTF8.GetBytes(key);
@@ -130,6 +148,9 @@ namespace StridexApi.Controllers
             return BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
         }
 
+        // =====================================================
+        // LẤY IP NGƯỜI DÙNG
+        // =====================================================
         private string GetIpAddress()
         {
             string ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString() ?? "127.0.0.1";
@@ -143,9 +164,13 @@ namespace StridexApi.Controllers
         }
     }
 
+    // =====================================================
+    // DTO NHẬN DỮ LIỆU TỪ FRONTEND
+    // =====================================================
     public class TaoThanhToanDto
     {
         public string MaDonHang { get; set; } = "";
+
         public long SoTien { get; set; }
     }
 }

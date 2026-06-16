@@ -1,0 +1,48 @@
+.ket-qua-thanh-toan {
+  padding: 80px 20px;
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hop-ket-qua {
+  max-width: 620px;
+  width: 100%;
+  background: white;
+  border-radius: 24px;
+  padding: 36px;
+  text-align: center;
+  box-shadow: 0 18px 45px rgba(9, 30, 66, 0.18);
+}
+
+.hop-ket-qua h1 {
+  color: #0b0d14;
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+
+.hop-ket-qua p {
+  color: #334155;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.hop-ket-qua.loi h1 {
+  color: #dc2626;
+}
+
+.nut-do {
+  margin-top: 20px;
+  display: inline-block;
+  background: #ef233c;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 800;
+}
+
+.nut-do:hover {
+  opacity: 0.9;
+}

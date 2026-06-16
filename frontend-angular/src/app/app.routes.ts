@@ -36,5 +36,17 @@ export const routes: Routes = [
     component: LichsuDonhangComponent,
     canActivate: [dangNhapGuard]
   },
+  {
+    path: 'thanh-toan-thanh-cong',
+    loadComponent: () =>
+      import('./pages/thanh-toan-ket-qua/thanh-toan-ket-qua.component')
+        .then(m => m.ThanhToanKetQuaComponent)
+  },
+  {
+    path: 'thanh-toan-that-bai',
+    loadComponent: () =>
+      import('./pages/thanh-toan-ket-qua/thanh-toan-ket-qua.component')
+        .then(m => m.ThanhToanKetQuaComponent)
+  },
   { path: '**', redirectTo: '' }
 ];

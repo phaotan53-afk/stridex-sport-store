@@ -17,6 +17,37 @@ namespace StridexApi.Controllers
             _configuration = configuration;
         }
 
+        [HttpGet]
+        public IActionResult LayTatCaNguoiDung()
+        {
+            string connectionString = _configuration.GetConnectionString("DefaultConnection")!;
+
+            var danhSach = new List<object>();
+
+            using SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+
+            string sql = @"SELECT Id, HoTen, Email, VaiTro
+                           FROM TaiKhoan
+                           ORDER BY Id DESC";
+
+            using SqlCommand cmd = new SqlCommand(sql, conn);
+            using SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                danhSach.Add(new
+                {
+                    id = reader["Id"],
+                    hoTen = reader["HoTen"],
+                    email = reader["Email"],
+                    vaiTro = reader["VaiTro"]
+                });
+            }
+
+            return Ok(danhSach);
+        }
+
         [HttpPost("dang-ky")]
         public IActionResult DangKy([FromBody] TaiKhoanDto tk)
         {

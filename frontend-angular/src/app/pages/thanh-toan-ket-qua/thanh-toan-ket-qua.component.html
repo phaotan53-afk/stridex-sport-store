@@ -1,0 +1,45 @@
+<section class="khung ket-qua-thanh-toan">
+
+  <div class="hop-ket-qua" *ngIf="thanhCong; else thatBai">
+    <h1>Thanh toán VNPay thành công</h1>
+
+    <p>
+      Mã đơn hàng:
+      <b>{{maDonHang}}</b>
+    </p>
+
+    <p>
+      Cảm ơn bạn đã mua hàng tại STRIDEX SPORT.
+    </p>
+
+    <a routerLink="/lich-su-don-hang" class="nut-do">
+      Xem lịch sử đơn hàng
+    </a>
+  </div>
+
+  <ng-template #thatBai>
+    <div class="hop-ket-qua loi">
+      <h1>Thanh toán VNPay chưa thành công</h1>
+
+      <p>
+        Mã đơn hàng:
+        <b>{{maDonHang}}</b>
+      </p>
+
+      <p>
+        Mã lỗi VNPay:
+        <b>{{maLoi}}</b>
+      </p>
+
+      <p>
+        Đây là môi trường sandbox/test nên có thể chỉ demo được bước kết nối
+        sang VNPay, không thực hiện giao dịch tiền thật.
+      </p>
+
+      <a routerLink="/gio-hang" class="nut-do">
+        Quay lại giỏ hàng
+      </a>
+    </div>
+  </ng-template>
+
+</section>
